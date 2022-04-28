@@ -1,0 +1,9 @@
+
+table NativeArrays {
+  arrayofshorts: [short];
+  arrayofints: [int];
+  // arrayofdoubles: [double];
+  arrayoffloats: [float];
+}
+
+root_type NativeArrays;

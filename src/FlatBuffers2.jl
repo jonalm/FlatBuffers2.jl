@@ -139,8 +139,8 @@ macro scopedenum(T, syms...)
             let insts = (Any[ $(esc(typename))(v) for v in $values ]...,)
                 Base.instances(::Type{$(esc(typename))}) = insts
             end
-            FlatBuffers.basetype(::$(esc(typename))) = $(basetype)
-            FlatBuffers.basetype(::Type{$(esc(typename))}) = $(basetype)
+            FlatBuffers2.basetype(::$(esc(typename))) = $(basetype)
+            FlatBuffers2.basetype(::Type{$(esc(typename))}) = $(basetype)
             $defs
         end
     end
