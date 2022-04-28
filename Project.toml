@@ -1,0 +1,4 @@
+name = "FlatBuffers2"
+uuid = "1e68e669-5122-42e2-85af-b267fcf765a9"
+authors = ["Jon Alm Eriksen <jon.alm.eriksen@novelda.com>"]
+version = "0.1.0"
