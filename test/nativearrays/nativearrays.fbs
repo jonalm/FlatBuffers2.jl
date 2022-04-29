@@ -2,7 +2,7 @@
 table NativeArrays {
   arrayofshorts: [short];
   arrayofints: [int];
-  // arrayofdoubles: [double];
+  arrayofdoubles: [double];
   arrayoffloats: [float];
 }
 

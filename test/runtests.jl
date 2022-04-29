@@ -41,37 +41,37 @@ end
 
 		b = FlatBuffers2.Builder()
 
-		#doubles = [1.0, 2.0, 3.0]
-		#Foo.NativeArraysStartArrayofdoublesVector(b, length(doubles))
-    	#for w in Iterators.reverse(doubles)
-    	#    FlatBuffers2.prependoffset!(b, w)
-    	#end
-    	#doubles_ = FlatBuffers2.endvector!(b, length(doubles))
+		doubles = [1.0, 2.0, 3.0]
+		Foo.NativeArraysStartArrayofdoublesVector(b, length(doubles))
+    	for w in Iterators.reverse(doubles)
+    	    FlatBuffers2.prepend!(b, w)
+    	end
+    	doubles_ = FlatBuffers2.endvector!(b, length(doubles))
 
 		shorts = Int16[1, 2, 3]
 		Foo.NativeArraysStartArrayofshortsVector(b, length(shorts))
     	for w in Iterators.reverse(shorts)
-    	    FlatBuffers2.prependoffset!(b, w)
+    	    FlatBuffers2.prepend!(b, w)
     	end
     	shorts_ = FlatBuffers2.endvector!(b, length(shorts))
 
 		ints = Int32[1, 2, 3]
 		Foo.NativeArraysStartArrayofintsVector(b, length(ints))
     	for w in Iterators.reverse(ints)
-    	    FlatBuffers2.prependoffset!(b, w)
+    	    FlatBuffers2.prepend!(b, w)
     	end
     	ints_ = FlatBuffers2.endvector!(b, length(ints))
 
 		floats = Float32[1.0, 2.0, 3.0]
 		Foo.NativeArraysStartArrayoffloatsVector(b, length(floats))
     	for w in Iterators.reverse(floats)
-    	    FlatBuffers2.prependoffset!(b, w)
+    	    FlatBuffers2.prepend!(b, w)
     	end
     	floats_ = FlatBuffers2.endvector!(b, length(floats))
 
 		Foo.NativeArraysAddArrayofshorts(b, shorts_)
 		Foo.NativeArraysAddArrayofints(b, ints_)
-		#Foo.NativeArraysAddArrayofdoubles(b, doubles_)
+		Foo.NativeArraysAddArrayofdoubles(b, doubles_)
 		Foo.NativeArraysAddArrayoffloats(b, floats_)
 
 		nativearrays = Foo.NativeArraysEnd(b)
@@ -83,7 +83,8 @@ end
 		#@test nativearrays_.arrayofdoubles[1] ===  doubles_[1]
 		#@test nativearrays_[Foo.NativeArraysProperties.arrayofdoubles][1] ===  doubles_[1]
 
-		@test nativearrays_.arrayoffloats[1] ===  floats_[1]
+		@test nativearrays_.arrayoffloats[1] === floats[1]
+
 		@show nativearrays_.arrayoffloats[1] 
 		@show nativearrays_.arrayoffloats[2] 
 		@show nativearrays_.arrayoffloats[3] 
